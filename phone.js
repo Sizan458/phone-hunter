@@ -1,18 +1,36 @@
-const loadPhone  =async()=>{
-    const res = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadPhone  =async(searchText,showAll)=>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones=  data.data
     
   // console.log(phones); 
-  displayPhone(phones);    
+  displayPhone(phones,showAll);    
 }
 
 
-const  displayPhone=phones =>{
+const  displayPhone=(phones,showAll) =>{
    //console.log(phones);
-  phones.forEach(phone=>{
-   console.log(phone);
    const phoneContainer = document.getElementById('card');
+   
+
+   phoneContainer.textContent='';
+
+   const allPhone =document.getElementById('btn2')
+   if (phones.length > 10 && !showAll) {
+    allPhone.classList.remove('hidden');
+    
+   }else{
+    allPhone.classList.add('hidden');
+   }
+  // console.log('is show all',showAll)
+
+   if(!showAll){
+    phones=phones.slice(0,10);
+   }
+   
+
+  phones.forEach(phone=>{
+   //console.log(phone);   
   const phoneCard = document.createElement('div');
   
    phoneCard.classList=` p-17 bg-base-100 shadow-xl`;
@@ -30,6 +48,32 @@ const  displayPhone=phones =>{
 phoneContainer.appendChild(phoneCard)
 
   })
+  spinner(false);
+ 
 }
 
-loadPhone()
+   
+
+const btn=(showAll)=> {
+  spinner(true);
+  const search=document.getElementById('input-field');
+  const searchText=search.value;
+  console.log(searchText);
+  loadPhone(searchText,showAll) ;
+}
+
+const spinner =(isLoading)=> {
+  const loading = document.getElementById('lodaing');
+  if(isLoading){
+    loading.classList.remove('hidden');
+  }else{
+    loading.classList.add('hidden');
+  }
+}
+
+const HandelShowAll=()=>{
+  btn(true);
+
+};
+
+//loadPhone()

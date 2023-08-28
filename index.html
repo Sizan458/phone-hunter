@@ -12,12 +12,17 @@
   <header><h1 class="text-5xl text-center mt-4">Phone <span class="text-violet-600">Hunter</span></h1></header>
   <main>
     <div class="mt-6 w-[50%] mx-auto  ">
-        <input id="input" type="text" placeholder="Type here" class="input input-bordered input-warning w-full max-w-xs" />
+        <input id="input-field" type="text" placeholder="Type here" class="input input-bordered input-warning w-full max-w-xs" />
     <button   id="btn" class="btn btn-active btn-primary" onclick="btn()">Search</button>
     </div>
-
+        <div  class="text-center mt-3">
+          <span id="lodaing" class="loading loading-spinner loading-lg hidden"></span>
+        </div>
     <div id="card" class="grid grid-cols-3 gap-4 w-[70%] mx-auto mt-9 bg-green-400" >
        
+      </div>
+      <div id="btn2" class="hidden mt-5 mb-4">
+        <button onclick="HandelShowAll()" class="btn btn-active btn-accent ml-[50%]">Show All</button>
       </div>
   </main>
     
