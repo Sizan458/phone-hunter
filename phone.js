@@ -33,6 +33,7 @@ const  displayPhone=(phones,showAll) =>{
    //console.log(phone);   
   const phoneCard = document.createElement('div');
   
+  
    phoneCard.classList=` p-17 bg-base-100 shadow-xl`;
    phoneCard.innerHTML=`
    <figure class='mt-8 ml-20'><img src="${phone.image}"></figure>
@@ -57,6 +58,7 @@ phoneContainer.appendChild(phoneCard)
 const btn=(showAll)=> {
   spinner(true);
   const search=document.getElementById('input-field');
+  search.textContent ="";
   const searchText=search.value;
   console.log(searchText);
   loadPhone(searchText,showAll) ;
@@ -114,4 +116,4 @@ const showAllData = phone =>{
 
   my_modal_1.showModal()
 }
-//loadPhone()
+loadPhone('iphone' )
