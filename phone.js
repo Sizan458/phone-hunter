@@ -41,7 +41,7 @@ const  displayPhone=(phones,showAll) =>{
      }</h2>
      <p>If a dog chews shoes whose shoes does he choose?</p>
      <div class="card-actions justify-end">
-       <button class="btn btn-primary">Buy Now</button>
+       <button onclick="datile('${phone.slug}')" class="btn btn-primary">Show Details</button>
      </div>
    </div>
    `
@@ -76,4 +76,42 @@ const HandelShowAll=()=>{
 
 };
 
+const datile = async(id)=>{
+ //console.log('datile',id);
+  const res= await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+  const data =   await res.json();
+  const phone = data.data;
+  showAllData(phone);
+  
+};
+
+const showAllData = phone =>{
+ console.log(phone);
+  
+  const p=  document. getElementById('s-d-c')
+  p.innerHTML=`
+      <img class='ml-[35%]' src="${phone.image}" alt="" />
+      <h2 class='mt-10 '>${phone.name}</h2>
+      <p class='mt-5'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+      <p>Storage:<span>${phone.mainFeatures.storage
+      }</span> </p>
+      <p>Display Size:<span >${phone.mainFeatures.displaySize
+      }</span> </p>
+      <p>Chipset:<span>${phone.mainFeatures.chipSet}</span></p>
+      <p>Memory:<span>${phone.mainFeatures.memory}</span></p>
+      <p>Sensors:<span>${phone.mainFeatures.sensors}</span></p>
+      <p>Model:<span>${phone.slug}</span></p>
+      <p>Release data:<span>${phone.releaseDate}</span></p>
+      <p>Wifi:<span>${phone.others?.WLAN || 'No Wifi'}</span></p>
+      <p>Bluetooth:<span>${phone.others?.Bluetooth || 'No Bluetooth'}</span></p>
+      <P>GPS:<span>${phone.others?.GPS || 'No GPS'}</span></P>
+      <p>NFC:<span>${phone.others?.NFC || 'NO NFC'}</span></p>
+      <p>USB:<span>${phone.others?.USB || 'No USB'}</span></p>
+      <p>Radio:<span>${phone.others?.Radio || 'No Radio'}</span></p>
+      
+      
+  `;
+
+  my_modal_1.showModal()
+}
 //loadPhone()

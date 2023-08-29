@@ -24,8 +24,21 @@
       <div id="btn2" class="hidden mt-5 mb-4">
         <button onclick="HandelShowAll()" class="btn btn-active btn-accent ml-[50%]">Show All</button>
       </div>
+
+
   </main>
+    <!-- Open the modal using ID.showModal() method -->
+<button class="btn" onclick="my_modal_1.showModal()" hidden>open modal</button>
+<dialog id="my_modal_1" class="modal">
+  <form method="dialog" class="modal-box">
     
+     <div id="s-d-c"></div>
+    <div class="modal-action">
+      <!-- if there is a button in form, it will close the modal -->
+      <button class="btn">Close</button>
+    </div>
+  </form>
+</dialog>
     
 </body>
 <script src="phone.js"></script>
